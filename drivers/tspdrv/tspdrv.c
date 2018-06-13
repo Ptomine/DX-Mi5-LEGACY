@@ -40,7 +40,7 @@
 #include <linux/platform_device.h>
 #include <asm/uaccess.h>
 #include <asm/atomic.h>
-#include <tspdrv.h>
+#include <../drivers/tspdrv/tspdrv.h>
 
 #define IMMVIBESPI_MULTIPARAM_SUPPORT
 
@@ -51,7 +51,7 @@ static int g_nTimerPeriodMs = 5; /* 5ms timer by default. This variable could be
 static atomic_t g_bRuntimeRecord;
 #endif
 
-#include <ImmVibeSPI.c>
+#include <../drivers/tspdrv/ImmVibeSPI.c>
 #if (defined(VIBE_DEBUG) && defined(VIBE_RECORD)) || defined(VIBE_RUNTIME_RECORD)
 #include <tspdrvRecorder.c>
 #endif
@@ -92,9 +92,9 @@ static int g_nMajor;
 
 
 /* Needs to be included after the global variables because they use them */
-#include <tspdrvOutputDataHandler.c>
+#include <../drivers/tspdrv/tspdrvOutputDataHandler.c>
 #ifdef CONFIG_HIGH_RES_TIMERS
-    #include <VibeOSKernelLinuxHRTime.c>
+    #include <../drivers/tspdrv/VibeOSKernelLinuxHRTime.c>
 #else
     #include <VibeOSKernelLinuxTime.c>
 #endif
